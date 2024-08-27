@@ -13,15 +13,15 @@ spec:
         kind: Cluster
         metadata:
           labels:
-            cluster_name: gke
+            cluster_name: ${{ values.clusterName }}
         spec:
           forProvider:
             enableAutopilot: false
             enableIntranodeVisibility: true
             ipAllocationPolicy:
               - {}
-            initialNodeCount: 1
-            location: us-central1
+            initialNodeCount: ${{ values.nodeCount }}
+            location: ${{ values.region }}
             removeDefaultNodePool: true
           writeConnectionSecretToRef:
             name: gke-managed-resources-kubeconfig
@@ -42,14 +42,14 @@ spec:
           forProvider:
             clusterSelector:
               matchLabels:
-                cluster_name: gke
+                cluster_name: ${{ values.clusterName }}
             nodeConfig:
-              - machineType: e2-medium
+              - machineType:  ${{ values.machineType }}
                 diskSizeGb: 50
                 oauthScopes:
                   - https://www.googleapis.com/auth/cloud-platform
                 preemptible: true
-            nodeCount: 1
+            nodeCount: ${{ values.nodeCount }}
       patches:
         - type: FromCompositeFieldPath
           fromFieldPath: "spec.parameters.machineType"

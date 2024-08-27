@@ -1,12 +1,12 @@
 apiVersion: compositions.io/v1alpha1
 kind: XCluster
 metadata:
-  name: example-gke-cluster
+  name: ${{ values.clusterName }}
 spec:
   parameters:
-    clusterName: gke-sample
-    region: us-east1
-    machineType: e2-small
-    nodeCount: 1
+    clusterName: ${{ values.clusterName }}
+    region: ${{ values.region }}
+    machineType: ${{ values.machineType }}
+    nodeCount: ${{ values.nodeCount }}
   compositionRef:
     name: gke-cluster-nodepool
