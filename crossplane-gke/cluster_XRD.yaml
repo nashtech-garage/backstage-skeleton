@@ -5,15 +5,15 @@ metadata:
 spec:
   group: compositions.io
   names:
-    kind: XCluster 
-    plural: xclusters
-  claimNames:
-    kind: GKECluster
+    kind: XCluster  # When you create a resource of this type, it will be of kind XCluster.
+    plural: xclusters # used in the Kubernetes API when listing resources of this type.
+  claimNames: # This allows for an alias or a shorthand for the composite resource
+    kind: GKECluster # This is an alias for the XCluster kind, which can be used when interacting with this resource.
     plural: gkeclusters
   versions:
   - name: v1alpha1
     served: true
-    referenceable: true
+    referenceable: true # Indicates that this version of the resource can be referenced by other resources.
     schema:
       openAPIV3Schema:
         type: object
@@ -32,10 +32,10 @@ spec:
                     type: string
                   nodeCount:
                     type: number
-              compositionRef:
+              compositionRef: # This is a reference to the Composition that will be used to create the underlying resources for this composite resource.
                 type: object
                 properties:
                   name:
                     type: string
-                    enum:
+                    enum:            # enum:: This restricts the value of name to one of the specified strings, ensuring that only a valid Composition name can be used.
                       - gke-cluster-nodepool
