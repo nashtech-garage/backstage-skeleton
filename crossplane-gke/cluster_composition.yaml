@@ -4,7 +4,6 @@ metadata:
   name: gke-cluster-nodepool
   annotations:
     argocd.argoproj.io/sync-wave: "3"
-    argocd.argoproj.io/hook: PreSync
 spec:
   compositeTypeRef:
     apiVersion: compositions.io/v1alpha1
