@@ -2,6 +2,8 @@ apiVersion: compositions.io/v1alpha1
 kind: XCluster
 metadata:
   name: ${{ values.clusterName }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   parameters:
     clusterName: ${{ values.clusterName }}
