@@ -3,7 +3,7 @@ kind: Composition
 metadata:
   name: gke-cluster-nodepool
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   compositeTypeRef:
     apiVersion: compositions.io/v1alpha1
