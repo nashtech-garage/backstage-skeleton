@@ -2,8 +2,6 @@ apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
   name: gke-cluster-nodepool
-  annotations:
-    argocd.argoproj.io/sync-wave: "3"
 spec:
   compositeTypeRef:
     apiVersion: compositions.io/v1alpha1
@@ -15,17 +13,17 @@ spec:
         kind: Cluster
         metadata:
           labels:
-            cluster_name: ${{ values.clusterName }}
+            cluster_name: gke1
         spec:
           providerConfigRef:
-            name: gcp-provider-config  # Propagate the providerConfigRef here
+            name: gcp-provider-config-2  # Propagate the providerConfigRef here
           forProvider:
             enableAutopilot: false
             enableIntranodeVisibility: true
             ipAllocationPolicy:
               - {}
-            initialNodeCount: ${{ values.nodeCount }}
-            location: ${{ values.region }}
+            initialNodeCount: 1
+            location: us-central1
             removeDefaultNodePool: true
           writeConnectionSecretToRef:
             name: gke-managed-resources-kubeconfig
@@ -44,18 +42,18 @@ spec:
         kind: NodePool
         spec:
           providerConfigRef:
-            name: gcp-provider-config  # Propagate the providerConfigRef here
+            name: gcp-provider-config-2  # Propagate the providerConfigRef here
           forProvider:
             clusterSelector:
               matchLabels:
-                cluster_name: ${{ values.clusterName }}
+                cluster_name: gke1
             nodeConfig:
-              - machineType:  ${{ values.machineType }}
+              - machineType: e2-medium
                 diskSizeGb: 50
                 oauthScopes:
                   - https://www.googleapis.com/auth/cloud-platform
                 preemptible: true
-            nodeCount: ${{ values.nodeCount }}
+            nodeCount: 1
       patches:
         - type: FromCompositeFieldPath
           fromFieldPath: "spec.parameters.machineType"
