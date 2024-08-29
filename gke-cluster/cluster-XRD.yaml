@@ -2,6 +2,8 @@ apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
   name: xclusters.compositions.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   group: compositions.io
   names:
