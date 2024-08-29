@@ -11,7 +11,7 @@ spec:
   # The project the application belongs to.
   project: default
   source:
-    repoURL: https://github.com/${{values.owner}}/${{values.repo}}
+    repoURL: https://github.com/{{ index (splitList '=' (index (splitList '&' (splitList '?' .values.repoUrl).1) 0)) 1 }}/{{ index (splitList '=' (index (splitList '&' (splitList '?' .values.repoUrl).1) 1)) 1 }}
     targetRevision: HEAD
     path: ./crossplane-gke/gke-cluster
    
