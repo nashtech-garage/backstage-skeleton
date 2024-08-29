@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: ${{ values.repoUrl }}
     targetRevision: HEAD
-    path: ./crossplane-gke/manifests/gke-cluster
+    path: ./crossplane-gke/gke-cluster
    
   # Destination cluster and namespace to deploy the application
   destination:

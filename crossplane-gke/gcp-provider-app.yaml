@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: ${{ values.repoUrl }}
     targetRevision: HEAD
-    path: ./crossplane-gke/manifests/gcp-provider
+    path: ./crossplane-gke/gcp-provider
    
   # Destination cluster and namespace to deploy the application
   destination:
