@@ -10,7 +10,7 @@ spec:
     region: ${{ values.region }}
     machineType: ${{ values.machineType }}
     nodeCount: ${{ values.nodeCount }}
-    repo: "{{ index (splitList '=' (index (splitList '&' (splitList '?' .Values.repoUrl).1) 1)) 1 }}"
-    owner: "{{ index (splitList '=' (index (splitList '&' (splitList '?' .Values.repoUrl).1) 0)) 1 }}"
+    repo: "{{ index (splitList '=' (index (splitList '&' (splitList '?' .values.repoUrl).1) 1)) 1 }}"
+    owner: "{{ index (splitList '=' (index (splitList '&' (splitList '?' .values.repoUrl).1) 0)) 1 }}"
   compositionRef:
     name: gke-cluster-nodepool
