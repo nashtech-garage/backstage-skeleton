@@ -4,3 +4,4 @@ resources:
   - cluster-XRD.yaml
   - cluster-composition.yaml
   - cluster-XR-claim.yaml
+
