@@ -4,6 +4,7 @@ metadata:
   name: gke-cluster-nodepool
   annotations:
     argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
 spec:
   compositeTypeRef:
     apiVersion: compositions.io/v1alpha1

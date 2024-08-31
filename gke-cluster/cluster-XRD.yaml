@@ -4,6 +4,7 @@ metadata:
   name: xclusters.compositions.io
   annotations:
     argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
 spec:
   group: compositions.io
   names:
