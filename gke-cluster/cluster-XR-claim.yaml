@@ -5,6 +5,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
+  providerConfigRef:
+    name: gcp-provider-config  # Propagate the providerConfigRef here
   parameters:
     clusterName: ${{ values.clusterName }}
     region: ${{ values.region }}
