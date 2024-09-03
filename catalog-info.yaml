@@ -6,7 +6,7 @@ metadata:
 spec:
   type: resource
   lifecycle: development
-  system: NashTech
+  system: back-stack
   owner: infrastructure
   links:
     - url: https://console.cloud.google.com/kubernetes/clusters/details/${{ values.region }}/${{ values.clusterName }}
