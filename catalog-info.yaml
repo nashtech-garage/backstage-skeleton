@@ -7,7 +7,7 @@ spec:
   type: resource
   lifecycle: development
   system: back-stack
-  owner: infrastructure
+  owner: platform-engineers
   links:
     - url: https://console.cloud.google.com/kubernetes/clusters/details/${{ values.region }}/${{ values.clusterName }}
       title: GKE Console
